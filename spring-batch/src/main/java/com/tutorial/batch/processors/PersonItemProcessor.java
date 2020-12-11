@@ -12,16 +12,16 @@ import org.springframework.batch.item.ItemProcessor;
 
 public class PersonItemProcessor implements ItemProcessor<Person, Person> {
 
-  private static final Logger log = LoggerFactory.getLogger(PersonItemProcessor.class);
+    private static final Logger log = LoggerFactory.getLogger(PersonItemProcessor.class);
 
-  @Override
-  public Person process(Person person) {
-    final String firstName = person.getFirstName().toUpperCase();
-    final String lastName = person.getLastName().toUpperCase();
-    final Person transformedPerson = new Person(firstName, lastName);
+    @Override
+    public Person process(Person person) {
+        final String firstName = person.getFirstName().toUpperCase();
+        final String lastName = person.getLastName().toUpperCase();
+        final Person transformedPerson = new Person(firstName, lastName);
 
-    log.info("Converting (" + person + ") into (" + transformedPerson + ")");
+        log.info("Converting (" + person + ") into (" + transformedPerson + ")");
 
-    return transformedPerson;
-  }
+        return transformedPerson;
+    }
 }

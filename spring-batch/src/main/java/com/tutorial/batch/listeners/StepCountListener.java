@@ -16,18 +16,18 @@ import org.springframework.stereotype.Component;
 @Primary
 public class StepCountListener implements StepExecutionListener {
 
-  private static final Logger logger = LoggerFactory.getLogger(StepCountListener.class);
+    private static final Logger logger = LoggerFactory.getLogger(StepCountListener.class);
 
-  @Override
-  public void beforeStep(StepExecution stepExecution) {
+    @Override
+    public void beforeStep(StepExecution stepExecution) {
 //        int count = stepExecution.getCommitCount();
 ////        logger.info("ItemCount: " + count);
-  }
+    }
 
-  @Override
-  public ExitStatus afterStep(StepExecution stepExecution) {
+    @Override
+    public ExitStatus afterStep(StepExecution stepExecution) {
 //        int count = stepExecution.getCommitCount();
 //        logger.info("ItemCount: " + count);
-    return stepExecution.getExitStatus();
-  }
+        return stepExecution.getExitStatus();
+    }
 }

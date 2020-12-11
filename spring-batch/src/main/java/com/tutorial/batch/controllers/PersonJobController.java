@@ -23,31 +23,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/person-job")
 public class PersonJobController {
 
-  private static final Logger logger = LoggerFactory.getLogger(PersonJobController.class);
+    private static final Logger logger = LoggerFactory.getLogger(PersonJobController.class);
 
-  private final Job importUserJob;
+    private final Job importUserJob;
 
-  private final Step step1;
+    private final Step step1;
 
-  private final JobLauncher jobLauncher;
+    private final JobLauncher jobLauncher;
 
-  @Autowired
-  public PersonJobController(Job importUserJob, JobLauncher jobLauncher, Step step1) {
-    this.importUserJob = importUserJob;
-    this.jobLauncher = jobLauncher;
-    this.step1 = step1;
-  }
-
-  @GetMapping(params = {"action=run"})
-  public ResponseEntity<Void> runPersonJob() {
-    try {
-      jobLauncher.run(importUserJob, new JobParameters());
-      logger.info("Job finished successfully!");
-      logger.info("Step start limit = " + step1.getStartLimit());
-      return new ResponseEntity<>(HttpStatus.OK);
-    } catch (JobExecutionException e) {
-      logger.error(e.getMessage());
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    @Autowired
+    public PersonJobController(Job importUserJob, JobLauncher jobLauncher, Step step1) {
+        this.importUserJob = importUserJob;
+        this.jobLauncher = jobLauncher;
+        this.step1 = step1;
     }
-  }
+
+    @GetMapping(params = {"action=run"})
+    public ResponseEntity<Void> runPersonJob() {
+        try {
+            jobLauncher.run(importUserJob, new JobParameters());
+            logger.info("Job finished successfully!");
+            logger.info("Step start limit = " + step1.getStartLimit());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (JobExecutionException e) {
+            logger.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

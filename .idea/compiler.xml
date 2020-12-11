@@ -3,41 +3,43 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+      <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
-        <module name="batch" />
-        <module name="redis-session" />
-        <module name="websocket" />
-        <module name="quartz" />
-        <module name="cache" />
-        <module name="soap-client" />
-        <module name="jdbc-session" />
-        <module name="soap-server" />
+        <processorPath useClasspath="false">
+          <entry name="D:/Users/pysga/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.1.8.RELEASE/8e5e7de241b549c44b21231a6c4d8dc2312f77e/spring-boot-configuration-processor-2.1.8.RELEASE.jar" />
+        </processorPath>
+        <module name="spring-upload-download.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="batch" target="11" />
-      <module name="cache" target="1.8" />
-      <module name="jdbc-session" target="1.8" />
-      <module name="quartz" target="1.8" />
-      <module name="redis-session" target="1.8" />
-      <module name="soap-client" target="1.8" />
-      <module name="soap-server" target="1.8" />
-      <module name="websocket" target="1.8" />
+      <module name="spring-actuator" target="1.8" />
+      <module name="spring-batch" target="11" />
+      <module name="spring-cache" target="1.8" />
+      <module name="spring-jdbc-session" target="1.8" />
+      <module name="spring-jdbc-template" target="1.8" />
+      <module name="spring-quartz-scheduler" target="1.8" />
+      <module name="spring-redis-session" target="1.8" />
+      <module name="spring-soap-client" target="1.8" />
+      <module name="spring-soap-server" target="1.8" />
+      <module name="spring-swagger" target="1.8" />
+      <module name="spring-websocket" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="batch" options="-parameters" />
-      <module name="cache" options="-parameters" />
-      <module name="jdbc-session" options="-parameters" />
-      <module name="quartz" options="-parameters" />
-      <module name="redis-session" options="-parameters" />
-      <module name="soap-client" options="-parameters" />
-      <module name="soap-server" options="-parameters" />
-      <module name="websocket" options="-parameters" />
+      <module name="spring-actuator" options="-parameters" />
+      <module name="spring-authorization-server" options="-parameters" />
+      <module name="spring-batch" options="-parameters" />
+      <module name="spring-cache" options="-parameters" />
+      <module name="spring-jdbc-session" options="-parameters" />
+      <module name="spring-jdbc-template" options="-parameters" />
+      <module name="spring-mongodb" options="-parameters" />
+      <module name="spring-quartz-scheduler" options="-parameters" />
+      <module name="spring-redis-session" options="-parameters" />
+      <module name="spring-soap-client" options="-parameters" />
+      <module name="spring-soap-server" options="-parameters" />
+      <module name="spring-swagger" options="-parameters" />
+      <module name="spring-websocket" options="-parameters" />
     </option>
   </component>
 </project>

@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GeneralExceptionHandler {
 
-  @ExceptionHandler(value = StartLimitExceededException.class)
-  public ResponseEntity<String> exception(StartLimitExceededException exception) {
-    exception.printStackTrace();
-    return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-  }
+    @ExceptionHandler(value = StartLimitExceededException.class)
+    public ResponseEntity<String> exception(StartLimitExceededException exception) {
+        exception.printStackTrace();
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

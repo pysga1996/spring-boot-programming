@@ -13,15 +13,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class SkipLimiter implements SkipPolicy {
 
-  private static final Logger logger = LoggerFactory.getLogger(SkipLimiter.class);
+    private static final Logger logger = LoggerFactory.getLogger(SkipLimiter.class);
 
-  @Override
-  public boolean shouldSkip(Throwable throwable, int i) throws SkipLimitExceededException {
-    if (i > 3) {
-      logger.info("Exceed skip limit");
-      return false;
-    } else {
-      return true;
+    @Override
+    public boolean shouldSkip(Throwable throwable, int i) throws SkipLimitExceededException {
+        if (i > 3) {
+            logger.info("Exceed skip limit");
+            return false;
+        } else {
+            return true;
+        }
     }
-  }
 }

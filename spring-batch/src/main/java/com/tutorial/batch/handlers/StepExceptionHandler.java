@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class StepExceptionHandler implements ExceptionHandler {
 
-  private static final Logger logger = LoggerFactory.getLogger(StepExceptionHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(StepExceptionHandler.class);
 
-  @Override
-  public void handleException(RepeatContext repeatContext, Throwable throwable) throws Throwable {
-    logger.info(throwable.getMessage());
-    throw new Exception(throwable);
-  }
+    @Override
+    public void handleException(RepeatContext repeatContext, Throwable throwable) throws Throwable {
+        logger.info(throwable.getMessage());
+        throw new Exception(throwable);
+    }
 }

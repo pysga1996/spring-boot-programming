@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="SPRING_SOAP_CLIENT" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <module name="soap-client" />
+    <module name="spring-soap-client" />
     <extension name="net.ashald.envfile">
       <option name="IS_ENABLED" value="true" />
       <option name="IS_SUBST" value="false" />
