@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-batch/batch.iml" filepath="$PROJECT_DIR$/spring-batch/batch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cache/cache.iml" filepath="$PROJECT_DIR$/spring-cache/cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-jdbc-session/jdbc-session.iml" filepath="$PROJECT_DIR$/spring-jdbc-session/jdbc-session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-quartz/quartz.iml" filepath="$PROJECT_DIR$/spring-quartz/quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-redis-session/redis-session.iml" filepath="$PROJECT_DIR$/spring-redis-session/redis-session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-soap-client/soap-client.iml" filepath="$PROJECT_DIR$/spring-soap-client/soap-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-soap-server/soap-server.iml" filepath="$PROJECT_DIR$/spring-soap-server/soap-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-websocket/websocket.iml" filepath="$PROJECT_DIR$/spring-websocket/websocket.iml" />
+    </modules>
+  </component>
+</project>

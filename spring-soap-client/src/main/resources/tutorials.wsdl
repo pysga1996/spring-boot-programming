@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://www.vengeance.net/tutorial/countries" xmlns:sch1="http://www.vengeance.net/tutorial/class" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.vengeance.net/tutorial" targetNamespace="http://www.vengeance.net/tutorial">
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://www.vengeance.net/tutorial/countries" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.vengeance.net/tutorial/countries">
+  <xs:element name="getCountryRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getCountryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="country" type="tns:country"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="country">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="population" type="xs:int"/>
+      <xs:element name="capital" type="xs:string"/>
+      <xs:element name="currency" type="tns:currency"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="currency">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GBP"/>
+      <xs:enumeration value="EUR"/>
+      <xs:enumeration value="PLN"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.vengeance.net/tutorial/class">
+  <xs:element xmlns:tns="http://www.vengeance.net/tutorial/class" name="getClassResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Clazz" type="tns:Clazz"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getClassRequest">
+    <xs:complexType/>
+  </xs:element>
+  <xs:complexType name="Student">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Age" type="xs:byte"/>
+      <xs:element name="Gender" type="xs:boolean"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:short" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="StudentList">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.vengeance.net/tutorial/class" maxOccurs="unbounded" minOccurs="0" name="Student" type="tns:Student"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Clazz">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="BeginDate" type="xs:date"/>
+      <xs:element xmlns:tns="http://www.vengeance.net/tutorial/class" name="StudentList" type="tns:StudentList"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCountryRequest">
+    <wsdl:part element="sch0:getCountryRequest" name="getCountryRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClassResponse">
+    <wsdl:part element="sch1:getClassResponse" name="getClassResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryResponse">
+    <wsdl:part element="sch0:getCountryResponse" name="getCountryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClassRequest">
+    <wsdl:part element="sch1:getClassRequest" name="getClassRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="VengeancePort">
+    <wsdl:operation name="getCountry">
+      <wsdl:input message="tns:getCountryRequest" name="getCountryRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getCountryResponse" name="getCountryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClass">
+      <wsdl:input message="tns:getClassRequest" name="getClassRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getClassResponse" name="getClassResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VengeancePortSoap11" type="tns:VengeancePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCountry">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCountryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClass">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getClassRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getClassResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VengeanceService">
+    <wsdl:port binding="tns:VengeancePortSoap11" name="VengeancePortSoap11">
+      <soap:address location="http://localhost:8080/vengeance/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

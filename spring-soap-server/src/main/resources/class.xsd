@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vengeance.net/tutorial/class" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="getClassResponse" xmlns:tns="http://www.vengeance.net/tutorial/class" >
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="tns:Clazz" name="Clazz" xmlns:tns="http://www.vengeance.net/tutorial/class"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getClassRequest">
+    <xs:complexType/>
+  </xs:element>
+  <xs:complexType name="Student">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Age" type="xs:byte"/>
+      <xs:element name="Gender" type="xs:boolean"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="StudentList">
+    <xs:sequence>
+      <xs:element type="tns:Student" name="Student" maxOccurs="unbounded" minOccurs="0" xmlns:tns="http://www.vengeance.net/tutorial/class"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Clazz">
+    <xs:sequence>
+      <xs:element type="xs:string" name="Name"/>
+      <xs:element type="xs:date" name="BeginDate"/>
+      <xs:element type="tns:StudentList" name="StudentList" xmlns:tns="http://www.vengeance.net/tutorial/class"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

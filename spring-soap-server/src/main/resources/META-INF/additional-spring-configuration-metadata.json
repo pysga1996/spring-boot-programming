@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "auth.username",
+      "type": "java.lang.String",
+      "description": "Description for auth.username."
+    },
+    {
+      "name": "auth.password",
+      "type": "java.lang.String",
+      "description": "Description for auth.password."
+    }
+  ] }

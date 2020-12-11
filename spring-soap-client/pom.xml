@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.5.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <groupId>com.tutorial</groupId>
+  <artifactId>soap-client</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>spring-soap-client</name>
+  <description>Demo project for Spring Boot</description>
+
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web-services</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.ws</groupId>
+      <artifactId>spring-ws-security</artifactId>
+      <version>3.0.10.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure-processor</artifactId>
+      <version>2.3.4.RELEASE</version>
+    </dependency>
+
+<!--    &lt;!&ndash;    fix for Java 11&ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>javax.xml.bind</groupId>-->
+<!--      <artifactId>jaxb-api</artifactId>-->
+<!--      <version>2.3.1</version>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/javax.activation/activation &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>javax.activation</groupId>-->
+<!--      <artifactId>activation</artifactId>-->
+<!--      <version>1.1.1</version>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish.jaxb</groupId>-->
+<!--      <artifactId>jaxb-runtime</artifactId>-->
+<!--      <version>3.0.0</version>-->
+<!--    </dependency>-->
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
+        <version>0.12.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <schemaLanguage>WSDL</schemaLanguage>
+          <schemaDirectory>src/main/resources</schemaDirectory>
+          <schemaIncludes>
+            <include>tutorials.wsdl</include>
+          </schemaIncludes>
+          <generatePackage>com.tutorial.soapclient.models</generatePackage>
+<!--          <schemas>-->
+<!--            <schema>-->
+<!--              <url>http://localhost:8080/vengeance/ws/tutorials.wsdl</url>-->
+<!--            </schema>-->
+<!--&lt;!&ndash;            <schema>&ndash;&gt;-->
+<!--&lt;!&ndash;              <url>http://localhost:8080/vengeance/ws/countries.wsdl</url>&ndash;&gt;-->
+<!--&lt;!&ndash;            </schema>&ndash;&gt;-->
+<!--&lt;!&ndash;            <schema>&ndash;&gt;-->
+<!--&lt;!&ndash;              <url>http://localhost:8080/vengeance/ws/class.wsdl</url>&ndash;&gt;-->
+<!--&lt;!&ndash;            </schema>&ndash;&gt;-->
+<!--          </schemas>-->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

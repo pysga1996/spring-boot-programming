@@ -1,0 +1,21 @@
+<getClassResponse xmlns="http://www.vengeance.net/tutorial/class">
+    <Clazz>
+        <Name>Math</Name>
+        <BeginDate>2011-09-25</BeginDate>
+        <StudentList>
+            <Student id="150">
+                <Name>Vu Tat Thanh</Name>
+                <Age>25</Age>
+                <Gender>true</Gender>
+            </Student>
+            <Student id="75">
+                <Name>Nguyen Thu Trang</Name>
+                <Age>30</Age>
+                <Gender>false</Gender>
+            </Student>
+        </StudentList>
+    </Clazz>
+</getClassResponse>
+<!--<getClassRequest></getClassRequest>-->
+<!--<Class>-->
+<!--</Class>-->
