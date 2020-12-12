@@ -1,0 +1,26 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+  <panelchildren>
+    <panel apply="vn.vissoft.ems.core.controller.ImageLabel">
+      <!--            <caption>-->
+      <!--                Demo-->
+      <!--            </caption>-->
+      <panelchildren>
+        <bs-row>
+          <div sclass="col-12">
+            <charts id="chart" type="column" title="${arg.dataChart.title}"
+              subtitle="${arg.dataChart.subTitle}"/>
+          </div>
+        </bs-row>
+        <!--                <bs-row>-->
+        <!--                    <div sclass="col-12">-->
+        <!--                        <label value="${arg.types}"/>-->
+        <!--                    </div>-->
+        <!--&lt;!&ndash;                    <div forEach="${arg.types}" sclass="col-12">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+        <!--                </bs-row>-->
+      </panelchildren>
+    </panel>
+  </panelchildren>
+</zk>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+  <config-name>zk-springboot-ems</config-name>
+
+  <library-property>
+    <name>org.zkoss.theme.preferred</name>
+    <value>iceblue_c</value>
+  </library-property>
+  <!--enable websocket support in ZK 8.5.1 (ZK-3799)  -->
+  <listener>
+    <listener-class>org.zkoss.zkmax.au.websocket.WebSocketWebAppInit</listener-class>
+  </listener>
+</zk>

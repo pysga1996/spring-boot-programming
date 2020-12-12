@@ -21,6 +21,7 @@
         <option value="$PROJECT_DIR$/spring-jdbc-template/pom.xml" />
         <option value="$PROJECT_DIR$/spring-authorization-server/pom.xml" />
         <option value="$PROJECT_DIR$/spring-mongodb/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-quartz-scheduler/pom.xml" />
       </list>
     </option>
   </component>

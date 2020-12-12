@@ -5,9 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-actuator/spring-actuator.iml" filepath="$PROJECT_DIR$/spring-actuator/spring-actuator.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-batch/spring-batch.iml" filepath="$PROJECT_DIR$/spring-batch/spring-batch.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cache/spring-cache.iml" filepath="$PROJECT_DIR$/spring-cache/spring-cache.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spring-jdbc-session/jdbc-session.iml" filepath="$PROJECT_DIR$/spring-jdbc-session/jdbc-session.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-jdbc-template/spring-jdbc-template.iml" filepath="$PROJECT_DIR$/spring-jdbc-template/spring-jdbc-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spring-quartz/spring-quartz-scheduler.iml" filepath="$PROJECT_DIR$/spring-quartz/spring-quartz-scheduler.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-redis-session/spring-redis-session.iml" filepath="$PROJECT_DIR$/spring-redis-session/spring-redis-session.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-soap-client/spring-soap-client.iml" filepath="$PROJECT_DIR$/spring-soap-client/spring-soap-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-soap-server/spring-soap-server.iml" filepath="$PROJECT_DIR$/spring-soap-server/spring-soap-server.iml" />

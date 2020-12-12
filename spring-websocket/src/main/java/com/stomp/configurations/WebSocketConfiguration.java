@@ -1,6 +1,10 @@
 package com.stomp.configurations;
 
+import com.stomp.interceptor.CustomHandshakeInterceptor;
+import com.stomp.interceptor.UserInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
@@ -10,16 +14,32 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer {
 
-  @Override
-  public void configureMessageBroker(MessageBrokerRegistry config) {
-    config.enableSimpleBroker("/topic");
-    config.setApplicationDestinationPrefixes("/app");
-  }
+    private final CustomHandshakeInterceptor customHandshakeInterceptor;
 
-  @Override
-  public void registerStompEndpoints(StompEndpointRegistry registry) {
-    registry.addEndpoint("/ws")
-        .setAllowedOrigins("*", "chrome-extension://ggnhohnkfcpcanfekomdkjffnfcjnjam")
-        .withSockJS();
-  }
+    @Autowired
+    public WebSocketConfiguration(CustomHandshakeInterceptor customHandshakeInterceptor) {
+        this.customHandshakeInterceptor = customHandshakeInterceptor;
+    }
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+//    config.enableSimpleBroker("/topic");
+        config.enableSimpleBroker("/topic/", "/queue/");
+        config.setApplicationDestinationPrefixes("/app");
+        config.setUserDestinationPrefix("/user");
+    }
+
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/ws")
+            .setAllowedOrigins("*", "chrome-extension://ggnhohnkfcpcanfekomdkjffnfcjnjam")
+            .addInterceptors(customHandshakeInterceptor)
+            .withSockJS()
+        ;
+    }
+
+    @Override
+    public void configureClientInboundChannel(ChannelRegistration registration) {
+        registration.interceptors(new UserInterceptor());
+    }
 }

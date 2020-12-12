@@ -1,0 +1,111 @@
+<?link rel="stylesheet" href="/resources/css/grid-view.css" ?>
+<zk xmlns:n="native">
+  <div viewModel="@id('gvCtrl') @init('vn.vissoft.ems.core.controller.TableDemoCommonVM')">
+    <!-- SEARCH FORM -->
+    <groupbox closable="false" sclass="z-demo-config" style="padding-bottom: 5px;">
+      <caption label="Thông tin tìm kiếm"/>
+
+      <bs-row>
+        <n:div sclass="col-md-6 p-1">
+          <n:span class="z-label font-weight-bold">${c:l('user.userName')}</n:span>
+          <textbox
+            placeholder="Tìm kiếm tên"
+            value="@save(gvCtrl.userName, before='doSearch')"
+            onOK="@command('doSearch')"
+          />
+        </n:div>
+        <n:div sclass="col-md-6 p-1" align="right">
+          <n:span class="z-label font-weight-bold">${c:l('user.filter')}</n:span>
+          <combobox
+            mold="rounded" readonly="true"
+            placeholder="Chọn filter"
+            model="@load(gvCtrl.filterObjList)"
+            selectedItem="@bind(gvCtrl.filterObj)"
+            onSelect="@command('doFilter', box=self)"
+          >
+            <template name="model">
+              <comboitem label="${c:l(each.title)}" value="@load(each.value)"/>
+            </template>
+          </combobox>
+        </n:div>
+      </bs-row>
+    </groupbox>
+
+    <!-- GRID VIEW -->
+    <grid width="100%" model="@load(gvCtrl.listModel)" mold="paging">
+      <!-- HEADER -->
+      <columns menupopup="auto" sizable="true" hflex="1">
+        <if test="@load(gvCtrl.showIndex)">
+          <column label="${c:l('index.index')}" align="center"/>
+        </if>
+        <forEach items="@init(gvCtrl.colsModel)" var="headerInfo">
+          <column
+            label="${c:l(headerInfo.title)}"
+            align="center"
+            width="@load(headerInfo.width)"
+            sort="auto(${headerInfo.colInModel})"
+            onSort="@command('doSort', col=headerInfo)"
+          />
+        </forEach>
+        <if test="@load(gvCtrl.showAction)">
+          <column label="${c:l('index.action')}" align="center" width="160px"/>
+        </if>
+      </columns>
+      <!-- VALUE -->
+      <template name="model">
+        <row>
+          <if test="@load(gvCtrl.showIndex)">
+            <label value="${ gvCtrl.activePage * gvCtrl.activeSize + forEachStatus.index + 1 }"/>
+          </if>
+          <forEach items="@init(gvCtrl.colsModel)" var="rowModel">
+            <textbox
+              inplace="true"
+              value="@bind(each[rowModel.colInModel])"
+              align="@load(rowModel.align)"
+              readonly="@load(rowModel.disabled)"
+            />
+          </forEach>
+          <if test="@load(gvCtrl.showAction)">
+            <hlayout>
+              <forEach items="@init(gvCtrl.actionObjList)" var="rowActions">
+                <button
+                  tooltiptext="${c:l(rowActions.title)}"
+                  iconSclass="@load(rowActions.icon)"
+                  image="@load(rowActions.pathImg)"
+                  width="@load(rowActions.width)"
+                  autodisable="@load(rowActions.autoDisable)"
+                  onClick="@command(rowActions.funcName , row=each)"
+                />
+              </forEach>
+            </hlayout>
+          </if>
+        </row>
+      </template>
+    </grid>
+    <!-- PAGING -->
+    <paging
+      detailed="@load(gvCtrl.pageDetailed)"
+      totalSize="@load(gvCtrl.totalSize)"
+      pageSize="@load(gvCtrl.activeSize)"
+      activePage="@load(gvCtrl.activePage)"
+      onPaging="@command('doPaging', event=event)"
+    />
+    <div sclass="paging-block">
+      <n:div sclass="col-md-1">
+        <combobox
+          model="@load(gvCtrl.pageSizeOption)"
+          selectedItem="@load(gvCtrl.activeSize)"
+          value="@bind(gvCtrl.activeSize)"
+          width="100px"
+          onSelect="@command('doPageSize')"
+        >
+          <comboitem label="@load(each)"/>
+        </combobox>
+
+      </n:div>
+      <n:div sclass="col-md-11">
+
+      </n:div>
+    </div>
+  </div>
+</zk>

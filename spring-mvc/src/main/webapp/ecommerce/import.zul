@@ -1,0 +1,10 @@
+<zk xmlns:n="native">
+  <idspace>
+    <panel title="Product Import" border="normal"
+      viewModel="@id('vm')@init('vn.vissoft.ems.core.controller.ProductImportVM')">
+      <panelchildren>
+        <charts id="chart" type="column" title="" hflex="1"/>
+      </panelchildren>
+    </panel>
+  </idspace>
+</zk>

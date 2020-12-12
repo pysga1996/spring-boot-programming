@@ -1,0 +1,28 @@
+<zk>
+  <div viewModel="@id('vm') @init('vn.vissoft.ems.core.controller.TableDemoCommonVM')">
+    <grid width="100%" model="@load(vm.listModel)" mold="paging" pageSize="8">
+      <auxhead sclass="category-center">
+        <forEach items="@init(vm.colsFilter)">
+          <auxheader colspan="1">
+            <span sclass="z-icon-filter"/>
+            <textbox instant="true" width="100px"
+              value="@bind(vm.modelFilter[each.colName])" onChange="@command('changeFilter')"/>
+          </auxheader>
+        </forEach>
+        <!--GROUP: <auxheader label="Detail Data of Foods" colspan="3" />-->
+      </auxhead>
+      <columns>
+        <forEach items="@init(vm.colsModel)" var="headerInfo">
+          <column width="30%" sort="auto(${headerInfo.colName})" label="${c:l(headerInfo.title)}"/>
+        </forEach>
+      </columns>
+      <template name="model">
+        <row>
+          <forEach items="@init(vm.colsModel)" var="rowModel">
+            <label value="@load(each[rowModel.colName])"/>
+          </forEach>
+        </row>
+      </template>
+    </grid>
+  </div>
+</zk>

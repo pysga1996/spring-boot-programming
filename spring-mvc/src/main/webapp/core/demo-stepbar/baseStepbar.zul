@@ -1,0 +1,23 @@
+<zk>
+  <div apply="vn.vissoft.ems.core.controller.StepbarComposer">
+    <stepbar id="stepbar">
+      <template name="model">
+        <step title="${each.title}"/>
+      </template>
+    </stepbar>
+    <separator height="30px"/>
+    <div id="stepContent" align="center"/>
+    <separator height="30px"/>
+    <hlayout>
+      <button id="back" label="Back"/>
+      <separator hflex="1"/>
+      <button id="next" label="Next"/>
+    </hlayout>
+    <div>
+      <separator bar="true" height="30px"/>
+      <button id="toggleAdditionalStep" label="Toggle Additional Step 2.1"/>
+      <button id="toggleStepComplete" visible="false" label="Toggle Complete"/>
+      <button id="toggleStepError" label="Toggle Error"/>
+    </div>
+  </div>
+</zk>

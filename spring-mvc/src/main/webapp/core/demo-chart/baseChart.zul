@@ -1,0 +1,59 @@
+<zk>
+  <panel xmlns:n="native" title="Monthly Revenue Report" border="normal" height="100%"
+    id="demo2"
+    apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm') @init('vn.vissoft.ems.core.controller.ChartVM')">
+    <panelchildren>
+      <bs-row>
+        <n:div class="col-lg-1 ml-3">
+          Type chart
+        </n:div>
+        <n:div class="col-lg-2">
+          <combobox id="cmbSize"
+            model="@load(vm.types)" selectedItem="@bind(vm.typeChart)">
+            <template name="model">
+              <comboitem label="@load(each)"/>
+            </template>
+          </combobox>
+        </n:div>
+        <n:div class="col-lg-1">
+          <label value="@load(vm.typeChart)"/>
+          <!--                    <button id="aaa" label="Change" onClick="@command('removeMail')"/>-->
+        </n:div>
+      </bs-row>
+
+      <bs-row>
+        <n:div class="col-6">
+          <radiogroup id="sv1"
+            onCheck="@command('checkMarker', checkMarker=self.selectedItem.value)"/>
+
+          <radio id="ra1" label="Enabled marker" value="1" radiogroup="sv1"/>
+          <radio id="ra2" label="Disabled marker" value="2" radiogroup="sv1"/>
+
+        </n:div>
+        <n:div class="col-3">
+          Marker :
+          <label value="@bind(vm.marker)"/>
+        </n:div>
+      </bs-row>
+      <bs-row>
+        <n:div class="col-12">
+          <charts id="chart" type="@load(vm.typeChart)" title="Ngoc master ZK Chart"
+            subtitle="demo chart"/>
+        </n:div>
+      </bs-row>
+      <bs-row>
+        <?component name="newProduct" macroURI="/core/demo-chart/marcoDemo.zul"?>
+        <zk>
+          <!--                    <newProduct />-->
+          <separator height="30px"></separator>
+          <hlayout>
+            <newProduct title="Monitor" desc="The new HDMI monitor" age="44" data="ngoc"/>
+            <newProduct title="Cell" desc="This is zPhone" age="22" data="dat"/>
+          </hlayout>
+        </zk>
+      </bs-row>
+    </panelchildren>
+  </panel>
+</zk>
+

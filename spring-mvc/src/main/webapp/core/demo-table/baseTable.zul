@@ -1,0 +1,50 @@
+<zk>
+  <panel xmlns:n="native" title="Demo table" border="normal" height="100%">
+    <panelchildren>
+      <div viewModel="@id('vm') @init('vn.vissoft.ems.core.controller.FoodVM')">
+        <grid width="100%" model="@load(vm.foodModel)" mold="paging" pageSize="10">
+          <auxhead sclass="category-center">
+            <auxheader label="Healthy Food List" colspan="6"/>
+          </auxhead>
+          <auxhead sclass="category-center">
+            <auxheader colspan="1">
+              <span sclass="z-icon-filter"/>
+              <textbox instant="true" width="100px"
+                value="@bind(vm.foodFilter.category)" onChange="@command('changeFilter')"/>
+            </auxheader>
+            <auxheader colspan="1">
+              <span sclass="z-icon-filter"/>
+              <textbox instant="true" width="100px"
+                value="@bind(vm.foodFilter.name)" onChange="@command('changeFilter')"/>
+            </auxheader>
+            <auxheader colspan="1">
+              <span sclass="z-icon-filter"/>
+              <textbox instant="true" width="100px"
+                value="@bind(vm.foodFilter.nutrients)" onChange="@command('changeFilter')"/>
+            </auxheader>
+            <auxheader label="Detail Data of Foods" colspan="3"/>
+          </auxhead>
+          <columns>
+            <column width="20%" sort="auto(Category)">Category</column>
+            <column width="20%" sort="auto(Name)">Name</column>
+            <column width="20%" sort="auto(topNutrients)">Top Nutrients</column>
+            <column width="10%" sort="auto(dailyPercent)">% of Daily</column>
+            <column width="10%" sort="auto(calories)">Calories</column>
+            <column width="20%" sort="auto(quantity)">Quantity</column>
+          </columns>
+          <template name="model">
+            <row>
+              <label value="@load(each.category)"/>
+              <label value="@load(each.name)"/>
+              <label value="@load(each.topNutrients)"/>
+              <label value="@load(each.dailyPercent)"/>
+              <label value="@load(each.calories)"/>
+              <label value="@load(each.quantity)"/>
+            </row>
+          </template>
+        </grid>
+      </div>
+    </panelchildren>
+  </panel>
+</zk>
+

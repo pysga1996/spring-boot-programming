@@ -1,0 +1,86 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?link rel="shortcut icon" type="image/png" href="/favicon"?>
+<?link rel="icon" type="image/jpeg" sizes="16x16" href="/favicon"?>
+<?link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"?>
+<?link rel="stylesheet" href="/resources/css/zk-bootstrap.css" ?>
+<?link rel="stylesheet" href="/resources/css/zk-admin-bootstrap-custom-theme.css"?>
+<?link rel="stylesheet" href="/resources/css/custom-theme.css" ?>
+<?link rel="stylesheet" href="/resources/css/layout.css" ?>
+<zk xmlns:n="native" xmlns:w="client">
+  <hlayout id="mainlayout" viewModel="@id('vm')@init('vn.vissoft.ems.core.controller.MainVM')"
+    width="100%">
+    <apply templateURI="/sidebar.zul"/>
+    <div sclass="container-fluid" hflex="1">
+      <bs-row>
+        <n:div sclass="col-md-6">
+          <n:span class="z-label font-weight-bold">${c:l('index.change.theme')}</n:span>
+          <combobox mold="rounded" id="themeCombo" selectedItem="@bind(vm.themeSelected)"
+            onChange="@command('changeTheme', type=self.selectedItem.value)">
+            <comboitem label="breeze" value="breeze"/>
+            <comboitem label="sapphire" value="sapphire"/>
+            <comboitem label="iceblue" value="iceblue"/>
+            <comboitem label="silvertail" value="silvertail"/>
+            <comboitem label="atlantic" value="atlantic"/>
+          </combobox>
+        </n:div>
+        <n:div sclass="col-md-6" align="right">
+          <n:span class="z-label font-weight-bold">${c:l('index.lang.label')}</n:span>
+          <combobox mold="rounded" id="langCombo" selectedItem="@bind(vm.langSelected)"
+            onChange="@command('changeLang', type=self.selectedItem.value)">
+            <comboitem
+              label="${labels.index.lang.vn.$}"
+              image="/resources/images/flags/4x3/vn.svg"
+              description="${labels.index.lang.vn.des}"
+              value="vi_VN"
+            />
+            <comboitem
+              label="${labels.index.lang.us.$}"
+              image="/resources/images/flags/4x3/us.svg"
+              description="${labels.index.lang.us.des}"
+              value="en_US"
+            />
+          </combobox>
+        </n:div>
+      </bs-row>
+      <tabbox if="${vm.tabInfos != null}" id="tbox"
+        style="padding:0 0 20px 0; width:100%; min-height: 900px;" model="@bind(vm.tabInfos)"
+        selectedTab="@bind(vm.selected)">
+        <template name="model:tab">
+          <tab context="editPopup_${each.id}" label="${c:l(each.title)}"
+            closable="true" draggable="true" droppable="true" onDrop="@command('drop')"
+            onClose="@command('closeTab',idTab=each.id )" selected="@load(each.selected)"
+            onClick="@command('updateTabID', id=each.id)"/>
+        </template>
+        <template name="model:tabpanel">
+          <tabpanel>
+            <n:div sclass="container-fluid">
+              <include objectId="${each.id}" src="@load(each.path)"/>
+            </n:div>
+          </tabpanel>
+        </template>
+      </tabbox>
+
+
+      <div class="row" id="main1" children="@load(vm.tabInfos)">
+        <template name="children">
+          <menupopup id="editPopup_${each.id}">
+            <menuitem label="Pin"
+              image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAaCAYAAABLlle3AAAB5ElEQVRIS+2Wz8spYRTHz5DsLCytESuSjT9B2ShFYUtjpZCipNlhZzGUmomGja3JTlYWFspspGRloWRj68e5zdRVc3t75zRvXXdxZzfPfL7f73NOT+cZBj7wMB/IhH87lOM4VBQFns+nrjkWiwUcDgeIokgugAwGg0G8Xq8QiUQAEbVgNfB0OsF6vYb7/U72IoMsy+JyuYTdbqfTqOuLxQL2+z3ZiwyqlTmdTuR5HlKp1Fvn9XoxHo9Dq9Uie5FBNdTlcmG73YZMJvPWeTwezOfzUC6XyV5k8Hdop9OBdDqtC83lclCpVMheZPCjoX+21+12I8uyUCqVyAWQwcFggMViEQRBgGQyqTtIgUAAptMp2YsEjsdjLTAajcJoNNJper0echynfRMEgeRHgnw+H4bDYZAk6Ut+OBxqm+p2u5DNZg09DYF+v4/NZhPO5/O3bCwWQ3VSybJs6GkIFAoFnEwmkEgkwG63ayNQHX8Mw8Dr9Xq/r1YruN1ucDgcDD0NAVEUUZIkeDweWoAadjwe4XK5QCgUApvNpq1brVbw+/3A87yhpyHw1X1brVZxPp+Doiim9KZE9XodZ7MZbLdbU3pTolqthrIs/93QRqOhVbrZbExt2pTop/9V/0N/2sFv9R9p7y+p78obIXgmwQAAAABJRU5ErkJggg=="/>
+            <menuitem label="Unpin" iconSclass="z-icon-ban"/>
+            <menuseparator/>
+            <menuitem label="Close other tabs" iconSclass="z-icon-times"
+              onClick="@command('closeOtherTabs', idTab=each.id)"/>
+            <menuitem label="Close all tabs" iconSclass="z-icon-times"
+              onClick="@command('closeAllTabs')"/>
+          </menupopup>
+
+        </template>
+      </div>
+      <div self="@{define(footer)}" width="100%" sclass="page-footer font-small blue">
+        <div class="footer-copyright text-center py-3">© 2020 Copyright by
+          <a href="http://vissoft.vn/">Vissoft Update 1</a>
+        </div>
+      </div>
+    </div>
+  </hlayout>
+</zk>

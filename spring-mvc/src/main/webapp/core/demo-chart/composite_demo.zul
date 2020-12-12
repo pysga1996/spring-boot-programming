@@ -1,0 +1,61 @@
+<?component name="imageLabel" class="vn.vissoft.ems.core.controller.ImageLabel" ?>
+<window apply="org.zkoss.bind.BindComposer"
+  viewModel="@id('vm') @init('vn.vissoft.ems.core.controller.ChartVM')">
+  <bs-row>
+    <div sclass="col-4">
+      <label>Legend:</label>
+      <!--            <textbox value="@bind(vm.chartLayout.legend)"/>-->
+      <combobox id="legend"
+        model="@load(vm.types)" selectedItem="@bind(vm.chartLayout.legend)">
+        <template name="model">
+          <comboitem label="@load(each)"/>
+        </template>
+      </combobox>
+    </div>
+    <div sclass="col-4">
+      <label>Category:</label>
+      <!--            <textbox value="@bind(vm.chartLayout.category)"/>-->
+      <combobox id="category"
+        model="@load(vm.categories)" selectedItem="@bind(vm.chartLayout.category)">
+        <template name="model">
+          <comboitem label="@load(each)"/>
+        </template>
+      </combobox>
+    </div>
+    <div sclass="col-4">
+      <label>Value:</label>
+      <textbox value="@bind(vm.chartLayout.value)"/>
+    </div>
+  </bs-row>
+  <bs-row>
+    <div sclass="col-12 d-flex justify-content-center">
+      <button onClick="@command('createValue')">Thêm</button>
+    </div>
+
+  </bs-row>
+  <!--    <bs-row>-->
+  <!--        <div sclass="col-12">-->
+  <!--            <label value="@bind(vm.types)"/>-->
+  <!--        </div>-->
+  <!--    </bs-row>-->
+  <bs-row>
+    <!--        <div sclass="col-12">-->
+    <!--            <div forEach="${vm.types}">-->
+    <!--                <imageLabel type="${each}" dataChart="@bind(vm.charts)"/>-->
+    <!--            </div>-->
+    <listbox model="@bind(vm.chartDatas)" id="listbox">
+      <template name="model">
+        <listitem>
+          <!-- <listcell label="@load(each.text)"/>  -->
+          <listcell>
+            <!--                            <imageLabel type="@bind(each)"/>-->
+            <imageLabel dataChart="@bind(each)"/>
+            <!--                            <button onClick="@command('delete')">Xóa</button>-->
+          </listcell>
+        </listitem>
+      </template>
+    </listbox>
+    <!--            <imageLabel id="imageLabel" types="@bind(vm.types)" dataChart="@bind(vm.charts)"/>-->
+    <!--        </div>-->
+  </bs-row>
+</window>

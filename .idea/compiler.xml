@@ -10,14 +10,30 @@
         </processorPath>
         <module name="spring-upload-download.main" />
       </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-batch" />
+        <module name="spring-authorization-server" />
+        <module name="spring-jdbc-template" />
+        <module name="spring-jdbc-session" />
+        <module name="spring-cache" />
+        <module name="spring-soap-server" />
+        <module name="spring-mongodb" />
+        <module name="spring-soap-client" />
+        <module name="spring-actuator" />
+        <module name="spring-websocket" />
+        <module name="spring-swagger" />
+        <module name="spring-quartz-scheduler" />
+        <module name="spring-redis-session" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring-actuator" target="1.8" />
       <module name="spring-batch" target="11" />
       <module name="spring-cache" target="1.8" />
-      <module name="spring-jdbc-session" target="1.8" />
       <module name="spring-jdbc-template" target="1.8" />
-      <module name="spring-quartz-scheduler" target="1.8" />
       <module name="spring-redis-session" target="1.8" />
       <module name="spring-soap-client" target="1.8" />
       <module name="spring-soap-server" target="1.8" />

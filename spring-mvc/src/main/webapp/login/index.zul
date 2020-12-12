@@ -1,0 +1,59 @@
+<?page title="Login - EMS Web Portal" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" type="image/png" href="favicon"?>
+<?link rel="icon" type="image/png" sizes="16x16" href="favicon"?>
+<?link rel="stylesheet" type="text/css" href="/resources/css/login-form.css"?>
+
+<vlayout xmlns:c="client">
+  <window id="loginWin"
+    position="center" mode="overlapped" visible="true"
+    minimizable="false" zclass="window"
+    viewModel="@id('vm') @init('vn.vissoft.ems.core.controller.LoginVM')"
+  >
+    <div sclass="loginGrid">
+      <vbox align="center" style="width:100%" spacing="5px">
+
+        <image src="/resources/images/viettel.png" width="200px"/>
+        <label sclass="title">EMS Web Portal</label>
+        <label sclass="subtitle">HỆ THỐNG GIÁM SÁT THIẾT BỊ VÀ CẢNH BÁO</label>
+        <hbox zclass="input-wrapper">
+          <image src="/resources/images/icon/username.png" width="15px" height="15px"/>
+          <textbox
+            zclass="input"
+            id="userNameTV"
+            placeholder="Tên đăng nhập"
+            c:onFocus="this.select()"
+            value="@save(vm.user.userName, before='login')" onOK="@command('login')"
+          />
+        </hbox>
+        <hbox zclass="input-wrapper">
+          <image src="/resources/images/icon/lock.png" width="15px" height="15px"/>
+          <textbox
+            zclass="input"
+            id="userPass"
+            type="password"
+            placeholder="Mật khẩu"
+            c:onFocus="this.select()"
+            value="@save(vm.user.password, before='login')" onOK="@command('login')"
+          />
+          <!--image src="/resources/images/icon/eye.png" width="15px" height="15px" id="eye" /-->
+        </hbox>
+        <label zclass="message" value="@bind(vm.mesg)"/>
+
+        <button zclass="login_submit" label="ĐĂNG NHẬP" id="login" onClick="@command('login')"/>
+
+        <!---hbox style="width:100%; margin-bottom:30px">
+            <div hflex="1" align="start">
+                <a>Đổi mật khẩu</a>
+            </div>
+            <div hflex="1" align="end">
+                <a>Quên mật khẩu?</a>
+            </div>
+        </hbox-->
+        <div>
+          <label zclass="text">Copyright:</label>
+          <label zclass="text blue">Vissoft 2020</label>
+        </div>
+      </vbox>
+    </div>
+  </window>
+</vlayout>

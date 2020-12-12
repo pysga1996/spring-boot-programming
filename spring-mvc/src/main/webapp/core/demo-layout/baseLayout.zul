@@ -1,0 +1,43 @@
+<zk apply="vn.vissoft.ems.core.controller.PortalLayoutController">
+  <portallayout id="portalLayout" maximizedMode="whole">
+    <portalchildren style="padding: 5px" width="30%">
+      <panel id="calendar" title="Calendar" border="normal" collapsible="true" closable="true"
+        maximizable="true" style="margin-bottom:10px">
+        <panelchildren>
+          <calendar/>
+        </panelchildren>
+      </panel>
+      <panel id="translate" title="Translate" border="normal" collapsible="true" closable="true"
+        maximizable="true" style="margin-bottom:10px">
+        <panelchildren>
+          <include src="/core/demo-layout/translate.zul"/>
+        </panelchildren>
+      </panel>
+    </portalchildren>
+
+    <portalchildren style="padding: 5px" width="40%">
+      <panel id="todo" title="ToDo" border="normal" collapsible="true" closable="true"
+        maximizable="true" style="margin-bottom:10px">
+        <panelchildren>
+          <include src="/core/demo-layout/todo.zul"/>
+        </panelchildren>
+      </panel>
+      <panel id="clock" height="250px" title="Clock" border="normal" collapsible="true"
+        closable="true" maximizable="true" style="margin-bottom:10px">
+        <panelchildren>
+          <include src="/core/demo-layout/clock.zul"/>
+        </panelchildren>
+      </panel>
+    </portalchildren>
+
+    <portalchildren style="padding: 5px" width="30%">
+      <panel id="weather" title="Weather" border="normal" collapsible="true" closable="true"
+        maximizable="true" style="margin-bottom:10px">
+        <panelchildren>
+          <include src="/core/demo-layout/weather.zul"/>
+        </panelchildren>
+      </panel>
+    </portalchildren>
+  </portallayout>
+</zk>
+

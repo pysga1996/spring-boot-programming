@@ -1,0 +1,32 @@
+<zk xmlns="http://www.zkoss.org/2005/zul">
+  <div sclass="sidebar" viewModel="@id('vm')@init('vn.vissoft.ems.core.controller.SidebarVM')">
+    <div sclass="user-logo text-center">
+      <image src="/resources/images/viettel.png" width="60px" sclass="rounded"/>
+      <if test="@load(not vm.collapsed)">
+        <label sclass="username" value="${c:l('sidebar.welcome')} ${vm.userName}"/>
+      </if>
+    </div>
+    <navbar orient="vertical" collapsed="@load(vm.collapsed)">
+      <apply template="iterate" menuItems="@load(vm.menuList)"/>
+      <!-- Logout -->
+      <navitem label="Logout" iconSclass="z-icon-power-off"
+        onClick="@command('logout')"/>
+    </navbar>
+  </div>
+  <template name="iterate">
+    <forEach items="@load(menuItems)">
+      <apply template="@load(empty each.subMenus?'menuitem':'menu')" menuItem="@init(each)"/>
+    </forEach>
+  </template>
+  <template name="menu">
+    <nav label="${c:l(menuItem.labelKey)}" iconSclass="@init(menuItem.icon)"
+      badgeText="@init(vm.collapsed ? '': menuItem.counter)">
+      <apply template="iterate" menuItems="@init(menuItem.subMenus)"/>
+    </nav>
+  </template>
+  <template name="menuitem">
+    <navitem label="${c:l(menuItem.labelKey)}" iconSclass="@init(menuItem.icon)"
+      onClick="@command('navigate', menu=each, tbox=tbox)"
+      selected="@load(vm.navigationModel.contentUrl eq menuItem.path)"/>
+  </template>
+</zk>

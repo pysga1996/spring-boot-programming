@@ -1,0 +1,85 @@
+.z-loading {
+  top: 50% !important;
+  left: 45% !important;
+  align: center;
+  vertical-align: middle;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("../images/logo/BG_Trongdong.png");
+  background-size: cover;
+  overflow: auto;
+}
+
+.window {
+  width: 320px;
+}
+
+.window * {
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+
+.loginGrid {
+  width: 320px;
+}
+
+.title {
+  font-weight: 900;
+  color: #3A679D;
+  font-size: 25px
+}
+
+.subtitle {
+  font-size: 18px
+}
+
+.input-wrapper {
+  width: 320px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px 1px lightgrey;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: white;
+}
+
+.input {
+  border: none;
+  border-left: thin solid grey;
+  padding-left: 10px;
+  margin-left: 10px;
+  background: none;
+  width: 255px;
+}
+
+.login_submit {
+  border: none;
+  background: #3A679D;
+  border-radius: 5px;
+  height: 40px;
+  width: 100%;
+  color: white;
+  margin-bottom: 10px
+}
+
+a {
+  text-decoration: none;
+  color: #3A679D;
+  font-size: 15px !important;
+}
+
+.text {
+  font-size: 15px
+}
+
+.blue {
+  color: #3A679D;
+  font-weight: bold !important;
+}
+
+.message {
+  color: red !important;
+  font-size: 15px !important;
+}

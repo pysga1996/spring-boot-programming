@@ -1,0 +1,28 @@
+<groupbox id="gb" mold="3d" width="240px" closable="false"
+  viewModel="@id('vmChild') @init('vn.vissoft.ems.core.controller.ChildVM')">
+      
+  <style>
+            .desc {
+                color: #008bb6;
+                font-weight: bold;
+                font-family: Times New Roman;
+            }
+            .pic {
+                width: 100px;
+                height: 100px;
+            }
+        
+  </style>
+      
+  <caption label="${empty arg.title ? 'Product Title Template': arg.title}"/>
+      
+  <hlayout>
+            
+    <label class="desc" value="${empty arg.desc ? 'This product has no descriptions.': arg.desc}"/>
+            
+    <label class="desc" value="${arg.age}"/>
+            
+    <label class="desc" value="@load(vmChild.text)"/>
+        
+  </hlayout>
+</groupbox>
