@@ -1,6 +1,7 @@
 package com.mongodb.springmongodb;
 
 import com.mongodb.listeners.DataSeedingListener;
+import javax.annotation.PostConstruct;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.coyote.http2.Http2Protocol;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.boot.autoconfigure.mongo.MongoReactiveAutoConfiguration;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +29,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.annotation.PostConstruct;
-
 @SpringBootApplication(scanBasePackages = "com.mongodb")
 @EnableMongoRepositories(basePackages = {"com.mongodb.daos", "com.mongodb.repositories"})
 public class SpringMongodbApplication {
@@ -34,10 +36,10 @@ public class SpringMongodbApplication {
     private DataSeedingListener dataSeedingListener;
 
     @Value("${server.connector.port}")
-    private short httpPort;
+    private short httpsPort;
 
     @Value("${server.port}")
-    private short httpsPort;
+    private short httpPort;
 
     @Autowired
     public void setDataSeedingListener(DataSeedingListener dataSeedingListener) {
@@ -89,7 +91,7 @@ public class SpringMongodbApplication {
     @Bean
     public MongoTemplate mongoTemplate(MongoDbFactory mongoDbFactory, MongoMappingContext context) {
         MappingMongoConverter converter = new MappingMongoConverter(
-                new DefaultDbRefResolver(mongoDbFactory), context);
+            new DefaultDbRefResolver(mongoDbFactory), context);
         converter.setTypeMapper(new DefaultMongoTypeMapper(null));
         return new MongoTemplate(mongoDbFactory, converter);
     }

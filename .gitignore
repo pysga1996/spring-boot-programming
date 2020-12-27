@@ -1,4 +1,7 @@
 **/target/
 **/build/
+**/logs/
 **/.env
+**/Dockerfile
+**/docker-compose.yml
 **/*-production.properties
